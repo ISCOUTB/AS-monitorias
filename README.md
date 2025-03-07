@@ -15,10 +15,25 @@ arquitectura arc42, <https://www.arc42.org>. Creada por Dr. Peter
 Hruschka y Dr. Gernot Starke.
 
 # Introducción y Metas {#section-introduction-and-goals}
+En la Universidad Tecnológica de Bolívar se busca optimizar el rendimiento académico de sus 
+estudiantes mediante la integración de un módulo en la plataforma institucional SAVIO. Este 
+módulo se encargará de identificar a los estudiantes con calificaciones reprobatorias y 
+sugerirles sesiones de monitoría en horarios disponibles, gestionando la notificación tanto 
+para el estudiante como para el monitor asignado.
+Meta.
+Desarrollar un módulo de notificación y asignación de monitorías en SAVIO que, mediante la 
+integración con Banner, permita automatizar la identificación de estudiantes en riesgo 
+académico y la gestión de sus sesiones de monitoría. 
 
 ## Vista de Requerimientos {#_vista_de_requerimientos}
+- Descripción de los requisitos clave del Módulo de Monitorías.
+- Requerimientos funcionales y no funcionales.
+- Integraciones con otras plataformas educativas.
 
 ## Metas de Calidad {#_metas_de_calidad}
+- Alta disponibilidad y escalabilidad.
+- Facilidad de uso para monitores y estudiantes.
+- Seguridad en el manejo de información de los usuarios.
 
 ## Partes interesadas (Stakeholders) {#_partes_interesadas_stakeholders}
 
@@ -31,10 +46,15 @@ Hruschka y Dr. Gernot Starke.
 +-------------+---------------------------+---------------------------+
 
 # Restricciones de la Arquitectura {#section-architecture-constraints}
-
+- Uso de tecnologías compatibles con la infraestructura universitaria.
+- Cumplimiento con normativas de privacidad y seguridad de datos.
+- Interoperabilidad con LMS existentes.
 # Alcance y Contexto del Sistema {#section-context-and-scope}
 
 ## Contexto de Negocio {#_contexto_de_negocio}
+- Proporcionar un sistema eficiente para la gestión de monitoreos académicos.
+- Facilitar la comunicación entre estudiantes y monitores.
+- Permitir el registro y análisis de sesiones de monitoreo.
 
 **\<Diagrama o Tabla>**
 
@@ -128,21 +148,21 @@ Interfases importantes
 *\<plantilla de caja blanca>*
 
 # Vista de Ejecución {#section-runtime-view}
-
-## \<Escenario de ejecución 1> {#__escenario_de_ejecuci_n_1}
-
--   *\<Inserte un diagrama de ejecución o la descripción del escenario>*
-
--   *\<Inserte la descripción de aspectos notables de las interacciones
-    entre los bloques de construcción mostrados en este diagrama.\>*
-
-## \<Escenario de ejecución 2> {#__escenario_de_ejecuci_n_2}
-
-## ... {#_}
-
 ## \<Escenario de ejecución n> {#__escenario_de_ejecuci_n_n}
+## **Escenario de ejecución 1: Registro de monitoreo**
+1. Un estudiante inicia sesión en la plataforma.
+2. Solicita una sesión de monitoreo en una materia específica.
+3. El sistema asigna un monitor y agenda la sesión.
+4. Se notifica al estudiante y al monitor.
+
+## **Escenario de ejecución 2: Realización de monitoreo**
+1. El monitor inicia la sesión en el sistema.
+2. Conduce la sesión con el estudiante.
+3. Registra observaciones y asistencia.
+4. Se almacena el informe de la sesión en la base de datos.
 
 # Vista de Despliegue {#section-deployment-view}
+
 
 ## Nivel de infraestructura 1 {#_nivel_de_infraestructura_1}
 
@@ -195,19 +215,22 @@ Características de Calidad/Rendimiento
 # Decisiones de Diseño {#section-design-decisions}
 
 # Requerimientos de Calidad {#section-quality-scenarios}
-
+- **Escalabilidad:** Soporte para múltiples sesiones concurrentes.
+- **Disponibilidad:** Tolerancia a fallos mediante infraestructura en la nube.
+- **Seguridad:** Cifrado de datos y autenticación robusta.
 ## Árbol de Calidad {#__rbol_de_calidad}
 
 ## Escenarios de calidad {#_escenarios_de_calidad}
 
 # Riesgos y deuda técnica {#section-technical-risks}
+- Dependencia de servicios externos.
+- Posibles problemas de escalabilidad en picos de uso.
+- Compatibilidad con dispositivos móviles más antiguos.
 
 # Glosario {#section-glossary}
 
-+-----------------------+-----------------------------------------------+
-| Término               | Definición                                    |
-+=======================+===============================================+
-| *\<Término-1>*        | *\<definicion-1>*                             |
-+-----------------------+-----------------------------------------------+
-| *\<Término-2>*        | *\<definicion-2>*                             |
-+-----------------------+-----------------------------------------------+
+| Término          | Definición                                    |
+|------------------|-----------------------------------------------|
+| Monitor          | Estudiante encargado de guiar sesiones.       |
+| Sesión           | Espacio de apoyo académico para estudiantes.  |
+| Reporte          | Registro de una sesión de monitoreo.          |
