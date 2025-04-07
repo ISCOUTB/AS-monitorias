@@ -147,6 +147,68 @@ Interfases importantes
 
 *\<plantilla de caja blanca>*
 
+## visibilidad en building blocks
+#### Estructura propuesta
+#### Nivel 1 Visión general (caja blanca del sistema completo)
+#### Sistema: módulo de solicitud de monitorias
+
+##### Bloque principal:
+#####  Gestor de identificación académica
+- Se conecta con banner y obtiene estudiantes con bajo rendimiento.
+##### Gestor de sesiones de monitoria
+- Administra la solicitud, programación y seguimiento de sesiones.
+##### Notificación de usuario 
+- Envía correo/aviso a estudiantes y monitores
+##### Interfaz de usuario 
+- Página en savio donde el estudiante y el monitor interactúan
+##### Base de datos del modulo
+- Guardar historial de sesiones, observaciones y estado
+------------
+##### Descomposición de bloques
+Por ejemplo, gestor de sesiones de monitoria
+- Validador de solicitud 
+-  Planificador de horarios 
+- Asignado de monitor 
+- Generador reportes de sesión 
+Componentes internos de un bloque 
+##### Validador de solicitud
+- Componente que verifica si el estudiante está habilitado 
+- Componentes que verifica disponibilidad de monitores 
+- Aplicar la lógica de regla académica, ejemplo, nota :<3.0.
+
+- Un punto importante relaciones entre los bloques
+El gestor de académico actuaria de forma periódica para detectar estudiantes con bajo rendimiento.
+- El gestor de sesiones se comunica con el servidor de notificaciones y con la base de datos para almacenar y enviar información.
+
+------------
+## (Nivel 2) Gestor de sesiones de monitoria
+El propósito de este gestor es administrar el ciclo de las sesiones de monitorias: hablamos desde las solicitudes hasta el registro de la sesión realizada.
+#### Subcomponentes internos
+##### 1.Validador de la solicitud
+- Verifica si el estudiante está habilitado un ejemplo de esto sería si esta generado por un gestor académico.
+- Se asegura que el estudiante no tenga sesiones en conflicto.
+##### 2.Planifica horarios
+- Consulta los horarios disponibles de los monitores.
+- Presenta al estudiante opciones compartibles
+##### Asignar monitor
+- Selecciona un monitor disponible y que este apto para llevar acabo la asignatura.
+- Puede notificar de forma automática la asignación
+##### 4.Registro de sesión 
+- Puede capturar las observaciones y asistencia por el monitor 
+##### 5.Gestor de reporte 
+- Puede realizar informe por estudiante, asignatura y monitor.
+
+###### Planificador de horarios 
+- Con este planificador nos va ayudar a encontrar y dar sugerencia de los mejores horarios posibles para la monitoria, también debe considerar la disponibilidad del monitor, los cursos y si el estudiante tiene alguna restricción.
+
+## (Nivel 3) Subcomponentes
+##### Consultor de disponibilidad
+- Extrae los horarios disponibles de los monitores desde la base de datos.
+Compatibilidad
+- Se encarga de filtrar la disponibilidad que cuenta el estudiante en los horarios del monitor.
+Optimización
+- Toma prioridad con los resultados, ejemplo cercanía de fecha, afinidad temática.
+
 # Vista de Ejecución {#section-runtime-view}
 ## \<Escenario de ejecución n> {#__escenario_de_ejecuci_n_n}
 ## **Escenario de ejecución 1: Registro de monitoreo**
