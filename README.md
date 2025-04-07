@@ -198,10 +198,10 @@ El propósito de este gestor es administrar el ciclo de las sesiones de monitori
 ##### 5.Gestor de reporte 
 - Puede realizar informe por estudiante, asignatura y monitor.
 
-###### Planificador de horarios 
+###### Caja blanca nivel 3 Planificador de horarios 
 - Con este planificador nos va ayudar a encontrar y dar sugerencia de los mejores horarios posibles para la monitoria, también debe considerar la disponibilidad del monitor, los cursos y si el estudiante tiene alguna restricción.
 
-## (Nivel 3) Subcomponentes
+##  Subcomponentes
 ##### Consultor de disponibilidad
 - Extrae los horarios disponibles de los monitores desde la base de datos.
 Compatibilidad
@@ -273,6 +273,28 @@ Características de Calidad/Rendimiento
 ## *\<Concepto n>* {#__emphasis_concepto_n_emphasis}
 
 *\<explicación>*
+
+## Conceptos Cross-Cutting 
+#### Seguridad 
+- Para dar mayor seguridad utilizar autenticación todo el acceso se realiza mediante una autenticación de la institución en savio, usar un single-On.
+- Acceso diferenciado para los estudiantes, monitores, coordinadores. Se validan permisos en cada solicitud al backend.
+
+####  Escalabilidad
+- Los componentes asignación, planificación y notificación funcionan como servicio desacoplado lo que permite escalar de manera independiente. 
+- Para las bases de datos y tener optimización un índice de particiones y consultas eficiente para sesiones y usuarios activos.
+
+#### Integración con APIs
+- API en banner, hace consultas del rendimiento académico 
+- API interno en savio registra sesiones, puede gestionar disponibilidad, obtener información de los estudiantes.
+- Documentación de APIs rest las interacciones que estén expuesta cuentan con documentación OpenAPI.
+#### Manejo de errores y logging 
+###### Gestión centralizada de errores
+- Repuesta estandarizadas con código HTTP con códigos ejemplo 400 para errores de solicitud, 500 para fallos del sistema.
+- Captura de errores de validación y errores inesperados.
+#### Sistema de logs 
+- Registro de eventos importantes, inicio de sesión, solicitud de monitorias, fallos.
+- Uso de herramientas como ELK Stack, servidores en la nube. Azure monitor, AWS cloudwatch, esto es para centralizar y visualizar.
+- Una alerta automática en caso de una posible falla enviar una alerta al equipo de soporte.
 
 # Decisiones de Diseño {#section-design-decisions}
 
