@@ -16,7 +16,7 @@ Moodle is designed to allow educators, administrators and learners to create per
 
 ## Community
 
-[moodle.org][1] is the central hub for the Moodle Community, with spaces for educators, administrators and developers to meet and work together.
+[moodle.org][1] is the central hu for the Moodle Community, with spaces for educators, administrators and developers to meet and work together.
 
 You may also be interested in:
 
